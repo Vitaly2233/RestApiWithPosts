@@ -1,5 +1,6 @@
 require("dotenv").config();
 const userModel = require("./models/authSchema");
+const connection = require("./dbconnection");
 const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken");
@@ -26,8 +27,11 @@ app.post("/login", async (req, res) => {
 	// Authenticate User
 
 	const { username, password } = req.body;
-	const accessToken = generateAccessToken(userData);
-	const refreshToken = jwt.sign(userData, process.env.REFRESH_TOKEN);
+	const accessToken = generateAccessToken({ username, password });
+	const refreshToken = jwt.sign(
+		{ username, password },
+		process.env.REFRESH_TOKEN
+	);
 	const user = new userModel({
 		username: username,
 		password: password,
