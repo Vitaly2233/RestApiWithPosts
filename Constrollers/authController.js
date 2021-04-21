@@ -75,8 +75,9 @@ class authController {
 	}
 	async createPost(req, res) {
 		const { name, description } = req.post;
+		const user = await User.findById(req.user.id)
 		const newPost = new Post({
-			_id: req.user.id,
+			Owner: user.username,
 			Name: name,
 			Description: description,
 		});
