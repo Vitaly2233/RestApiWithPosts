@@ -4,6 +4,7 @@ const router = Router();
 const { check } = require("express-validator");
 const roleMiddleware = require("../Middleware/RoleMidlleware");
 const AuthMiddleware = require("../Middleware/AuthMiddleware");
+const CreateMiddleware = require("../Middleware/CreateMiddleware");
 
 router.post("/login", controller.login);
 router.post(
@@ -19,5 +20,6 @@ router.post(
 );
 router.get("/allPosts", roleMiddleware(['ADMIN']), controller.getAllPosts);
 router.get("/Posts", AuthMiddleware, controller.getUserPost);
+router.post("/createPost", CreateMiddleware, controller.createPost);
 
 module.exports = router;

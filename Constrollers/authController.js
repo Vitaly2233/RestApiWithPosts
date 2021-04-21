@@ -1,9 +1,11 @@
 const User = require("../models/User");
+const Post = require("../models/Posts")
 const Role = require("../models/Role");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
-const { secret } = require("../config")
+const { secret } = require("../config");
+const { post } = require("../routes/authRout");
 
 
 const generateAccesToken = (id, roles) => {
@@ -63,11 +65,22 @@ class authController {
 	}
 	//getting all the posts of person
 	async getUserPost(req, res) {
-		// let user = User.findOne({ _id: req.user.id })
-		// console.log(user);
+		//finding post due to user id  in database
+		let post = await Post.findById(req.user.id)
+		res.send(post)
 	}
 	async getAllPosts(req, res) {
-		console.log(req.user)
+		const posts = await Post.find({})
+		res.send(posts)
+	}
+	async createPost(req, res) {
+		const { name, description } = req.post;
+		const newPost = new Post({
+			_id: req.user.id,
+			Name: name,
+			Description: description,
+		});
+		await newPost.save();
 	}
 }
 
