@@ -2,6 +2,16 @@ const User = require("../models/User");
 const Role = require("../models/Role");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
+const { secret } = require("../config")
+
+
+const generateAccesToken = (id, roles) => {
+	const payload = {
+		id, roles
+	}
+	return jwt.sign(payload, secret, { expiresIn: "15m" });
+}
 class authController {
 	async registration(req, res) {
 		try {
@@ -33,11 +43,25 @@ class authController {
 	}
 	async login(req, res) {
 		try {
+			const { username, password } = req.body;
+			const user = await User.findOne({ username: username });
+			if (!user) {
+				return res.status(400).json({ message: "Can't find the user" })
+			}
+			const validPassword = bcrypt.compareSync(password, user.password);
+			if (!validPassword) {
+				return res.status(400).json({ message: "Wrong password" });
+			}
+			const token = generateAccesToken(user._id, user.roles);
+			return res.json({ token })
 		} catch (a) {
 			res.status(400).json({ message: "login error" });
+			console.log(a);
 		}
 	}
-	async getPosts(req, res) { }
+	async getPosts(req, res) {
+		res.send("WHHJSDFKSD")
+	}
 }
 
 module.exports = new authController();
