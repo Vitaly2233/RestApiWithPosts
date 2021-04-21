@@ -12,6 +12,8 @@ const generateAccesToken = (id, roles) => {
 	}
 	return jwt.sign(payload, secret, { expiresIn: "15m" });
 }
+
+// realisation for login register and get post
 class authController {
 	async registration(req, res) {
 		try {
@@ -59,8 +61,13 @@ class authController {
 			console.log(a);
 		}
 	}
-	async getPosts(req, res) {
-		res.send("WHHJSDFKSD")
+	//getting all the posts of person
+	async getUserPost(req, res) {
+		// let user = User.findOne({ _id: req.user.id })
+		// console.log(user);
+	}
+	async getAllPosts(req, res) {
+		console.log(req.user)
 	}
 }
 

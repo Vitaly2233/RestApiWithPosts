@@ -12,11 +12,12 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-	"username": "user",
-	"password": "user"
+	"username": "admin",
+	"password": "admin"
 }
 
 ###
 
-GET http://localhost:3000/auth/getPosts
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDE0MzE0LCJleHAiOjE2MTkwMTUyMTR9.mmUqzy24wg8LnGhrxJ1Y8dB7OzSsH-2dVjekelN1ewc
+
+GET http://localhost:3000/auth/Posts
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTAxODA3OSwiZXhwIjoxNjE5MDE4OTc5fQ.MIKWpK8b01z1wNeqcqw4uQL8MyO_DhwR-J2bUga7scA
