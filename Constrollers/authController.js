@@ -1,10 +1,16 @@
 const User = require("../models/User");
 const Role = require("../models/Role");
 const bcrypt = require("bcryptjs");
-
+const { validationResult } = require("express-validator");
 class authController {
 	async registration(req, res) {
 		try {
+			const errors = validationResult(req);
+			if (!errors.isEmpty()) {
+				return res
+					.status(400)
+					.json({ message: "Something wrong with registration" });
+			}
 			const { username, password } = req.body;
 			const candidat = await User.findOne({ username });
 			if (candidat !== null) {
@@ -31,7 +37,7 @@ class authController {
 			res.status(400).json({ message: "login error" });
 		}
 	}
-	async getPosts(req, res) {}
+	async getPosts(req, res) { }
 }
 
 module.exports = new authController();
