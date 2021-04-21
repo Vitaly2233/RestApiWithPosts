@@ -4,12 +4,12 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon code",
-		"startauth": "nodemon Auth.js"
+		"start": "nodemon code"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"bcryptjs": "^2.4.3",
 		"connect-mongo": "^4.4.1",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
