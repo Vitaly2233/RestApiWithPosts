@@ -3,7 +3,27 @@ const router = Router();
 //controllers
 const authController = require("../Constrollers/authController");
 const postController = require("../Constrollers/postController");
-
+/**
+ * @swagger
+ * components: 
+ *   schemas:
+ *     User:
+ *       type: object
+ *         required:
+ * 		     - username
+ * 			 - password
+ * 		   properties:
+ * 		     username:
+ * 			   type: string
+ *             description: "your username"
+ * 		     password:
+ * 		       type: string
+ * 		       description: "password"
+ * 		   example:
+ * 		     username: user
+ * 		     password: user
+ * 
+ */
 const { check } = require("express-validator");
 const roleMiddleware = require("../Middleware/RoleMidlleware");
 
