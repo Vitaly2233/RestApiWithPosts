@@ -12,8 +12,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-	"username": "user",
-	"password": "user"
+	"username": "admin",
+	"password": "admin"
 }
 
 ###
@@ -25,7 +25,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzO
 ###
 
 POST http://localhost:3000/auth/createPost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDgwMjQ1LCJleHAiOjE2MTkwODIwNDV9.QlNMUJOuRDFSv3O2pudLbAVGefon4tEVNY9xQfr6lek
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDg5NTk1LCJleHAiOjE2MTkwOTEzOTV9.StmezLabk7G_wi-si3LhRHkz09oWileoVN4Gq5ZKwMU
 Content-Type: application/json
 
 {
@@ -41,10 +41,21 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkN
 ###
 
 DELETE http://localhost:3000/auth/deletePost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDgwMjQ1LCJleHAiOjE2MTkwODIwNDV9.QlNMUJOuRDFSv3O2pudLbAVGefon4tEVNY9xQfr6lek
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTA4MzMzNiwiZXhwIjoxNjE5MDg1MTM2fQ.-gARHArpJJeNb63mgJbpja7VFqEaGIkWfJfgaYvkLAA
+Content-Type: application/json
+
+{
+	"name": "My second post",
+	"owner": "user"
+}
+
+###
+
+PUT http://localhost:3000/auth//editPost
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTA5ODE3NSwiZXhwIjoxNjE5MDk5OTc1fQ.XA-hOdtantw14u1LgQ_mLsXO7REVlhS402qRLwSkSAg
 Content-Type: application/json
 
 {
 	"name": "My first post",
-	"owner": "user"
+	"newDescription": "new description"
 }
