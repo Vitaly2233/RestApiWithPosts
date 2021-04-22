@@ -33,21 +33,24 @@ class postController {
 	async deletePost(req, res) {
 		let isAdmin = false;
 		req.user.roles.forEach(role => {
-			if (role == 'ADMIN') isAdmin = true;
+			if (role == 'admin') isAdmin = true;
 		});
 		const postName = req.body.name;
 		const user = await User.findById(req.user.id);
 		if (!isAdmin) {
 			const result = await Post.findOneAndDelete({ Name: postName, Owner: user.username });
-			deleteStatus(result, res);
+			sendStatus(result, res, "delete");
+			return;
 		}
-		if (!req.body.owner) {
+		if (req.body.owner) {
 			const result = await Post.findOneAndDelete({ Name: postName, Owner: req.body.owner });
-			deleteStatus(result, res, "delete");
+			sendStatus(result, res, "delete");
+			return;
 		}
 		else {
 			const result = await Post.findOneAndDelete({ Name: postName, Owner: user.username });
-			deleteStatus(result, res, "delete");
+			sendStatus(result, res, "delete");
+			return;
 		}
 	}
 	async updatePost(req, res) {
@@ -58,19 +61,20 @@ class postController {
 			if (role == 'ADMIN') isAdmin = true;
 		});
 		if (!isAdmin) {
-			const result = await Post.findOneAndUpdate({ Name: user.username }, { Description: req.body.newDescription })
-			sendStatus(result, res, "update")
-		}
-		if (!req.body.owner) {
-			const result = await Post.findOneAndUpdate({ Name: name }, { Description: req.body.newDescription });
+			console.log(newDescription);
+			const result = await Post.findOneAndUpdate({ Name: name, Owner: user.username }, { Description: newDescription })
 			sendStatus(result, res, "update");
+			return;
+		}
+		if (req.body.owner) {
+			const result = await Post.findOneAndUpdate({ Owner: req.body.owner, Name: name }, { Description: newDescription });
+			sendStatus(result, res, "update");
+			return;
 		}
 		else {
-			const result = await Post.findOneAndUpdate({
-				Owner: req.body.owner,
-				Name: name,
-			}, { Description: req.body.newDescription }, { new: true });
+			const result = await Post.findOneAndUpdate({ Name: name }, { Description: newDescription });
 			sendStatus(result, res, "update");
+			return;
 		}
 	}
 }

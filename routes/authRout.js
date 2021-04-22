@@ -1,11 +1,10 @@
 const Router = require("express");
+const router = Router();
 //controllers
 const authController = require("../Constrollers/authController");
 const postController = require("../Constrollers/postController");
 
-const router = Router();
 const { check } = require("express-validator");
-//importing middlewares
 const roleMiddleware = require("../Middleware/RoleMidlleware");
 
 router.post("/login", authController.login);
@@ -20,6 +19,7 @@ router.post(
 	],
 	authController.registration
 );
+//routs for posts
 router.get("/allPosts", roleMiddleware(['ADMIN']), postController.getAllPosts);
 router.get("/myPosts", roleMiddleware(['ADMIN', 'user']), postController.getUserPost);
 router.post("/createPost", roleMiddleware(['ADMIN', 'user']), postController.createPost);

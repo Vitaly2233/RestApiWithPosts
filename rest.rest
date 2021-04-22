@@ -12,50 +12,49 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-	"username": "admin",
-	"password": "admin"
+	"username": "user",
+	"password": "user"
 }
 
 ###
 
 
 GET http://localhost:3000/auth//allPosts
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTA3Nzc3MSwiZXhwIjoxNjE5MDc4NjcxfQ.IhVgnD65UMfsxuYYCmpmqJXzpYXBne00tcXPoWLCMvY
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTEwMDExOCwiZXhwIjoxNjE5MTAxOTE4fQ.M8aQxj7AHBAb8Z43Eu7pURrJsCSyJ8QA1yVxliM6pJI
 
 ###
 
 POST http://localhost:3000/auth/createPost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDg5NTk1LCJleHAiOjE2MTkwOTEzOTV9.StmezLabk7G_wi-si3LhRHkz09oWileoVN4Gq5ZKwMU
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MTAyOTYzLCJleHAiOjE2MTkxMDQ3NjN9.tz41prl0HWy0WE9SRvAEtJ0fD64nI2qlAqB9BbWEu8k
 Content-Type: application/json
 
 {
-	"name": "My first post",
-	"description": "fsdfasddfssdfsfadadfdsfsfsdfdsafa"
+	"name": "Posssdsdfsdffsddt",
+	"description": "Newsdfsdf pdsfsdost testing "
 }
 
 ###
 
 GET http://localhost:3000/auth/myPosts
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDgwNTQ3LCJleHAiOjE2MTkwODIzNDd9._L42OiJkyn7l9NVGXlXegymxof1JkAYEmTnWvurAP-c
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MTAyOTYzLCJleHAiOjE2MTkxMDQ3NjN9.tz41prl0HWy0WE9SRvAEtJ0fD64nI2qlAqB9BbWEu8k
 
 ###
 
 DELETE http://localhost:3000/auth/deletePost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTA4MzMzNiwiZXhwIjoxNjE5MDg1MTM2fQ.-gARHArpJJeNb63mgJbpja7VFqEaGIkWfJfgaYvkLAA
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MTAyOTYzLCJleHAiOjE2MTkxMDQ3NjN9.tz41prl0HWy0WE9SRvAEtJ0fD64nI2qlAqB9BbWEu8k
 Content-Type: application/json
 
 {
-	"name": "My second post",
-	"owner": "user"
+	"name": "Posssdsdfsdffsddt"
 }
 
 ###
 
 PUT http://localhost:3000/auth//editPost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTA5ODE3NSwiZXhwIjoxNjE5MDk5OTc1fQ.XA-hOdtantw14u1LgQ_mLsXO7REVlhS402qRLwSkSAg
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MTAyOTYzLCJleHAiOjE2MTkxMDQ3NjN9.tz41prl0HWy0WE9SRvAEtJ0fD64nI2qlAqB9BbWEu8k
 Content-Type: application/json
 
 {
-	"name": "My first post",
-	"newDescription": "new description"
+	"name": "Post",
+	"newDescription": "This is my post mazafaka"
 }

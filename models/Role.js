@@ -1,5 +1,5 @@
-const { Shema, model, Schema } = require("mongoose");
-
+const { model, Schema } = require("mongoose");
+//schema for useer's roles
 const Role = new Schema({
 	value: { type: String, unique: true, default: "user" },
 });
