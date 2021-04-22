@@ -1,21 +1,19 @@
 const User = require("../models/User");
-const Post = require("../models/Posts")
 const Role = require("../models/Role");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const { secret } = require("../config");
-const { post } = require("../routes/authRout");
 
 
 const generateAccesToken = (id, roles) => {
 	const payload = {
 		id, roles
 	}
-	return jwt.sign(payload, secret, { expiresIn: "15m" });
+	return jwt.sign(payload, secret, { expiresIn: "30m" });
 }
 
-// realisation for login register and get post
+// realisation for login register
 class authController {
 	async registration(req, res) {
 		try {
@@ -62,26 +60,6 @@ class authController {
 			res.status(400).json({ message: "login error" });
 			console.log(a);
 		}
-	}
-	//getting all the posts of person
-	async getUserPost(req, res) {
-		//finding post due to user id  in database
-		let post = await Post.findById(req.user.id)
-		res.send(post)
-	}
-	async getAllPosts(req, res) {
-		const posts = await Post.find({})
-		res.send(posts)
-	}
-	async createPost(req, res) {
-		const { name, description } = req.post;
-		const user = await User.findById(req.user.id)
-		const newPost = new Post({
-			Owner: user.username,
-			Name: name,
-			Description: description,
-		});
-		await newPost.save();
 	}
 }
 

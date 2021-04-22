@@ -12,23 +12,38 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-	"username": "admin",
-	"password": "admin"
+	"username": "user",
+	"password": "user"
 }
 
 ###
 
 
-GET http://localhost:3000/auth/Posts
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTAyMDg0MiwiZXhwIjoxNjE5MDIxNzQyfQ.rZpMW48cBbFR5wfvphEjnyvjo_asCKNhHpKojnPesRk
+GET http://localhost:3000/auth//allPosts
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTA3Nzc3MSwiZXhwIjoxNjE5MDc4NjcxfQ.IhVgnD65UMfsxuYYCmpmqJXzpYXBne00tcXPoWLCMvY
 
 ###
 
 POST http://localhost:3000/auth/createPost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzOTU1ZmZmMjMzMDQzMmY2OCIsInJvbGVzIjpbIkFETUlOIl0sImlhdCI6MTYxOTAyNTA5NywiZXhwIjoxNjE5MDI1OTk3fQ.GEpOfXul9XFp9xeh5AdXDg-CzMUq4D4OkC5GjPXlLLg
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDc4MDcxLCJleHAiOjE2MTkwNzk4NzF9.3ymsSUEZ39THsQh7CiFPv0OYhG67_AY5utnrg_NY-bI
 Content-Type: application/json
 
 {
-	"Name": "dfsdf",
-	"Description": "fsdfsdfsfadaa"
+	"name": "My second post",
+	"description": "fsdfasddfssdfsfadadfdsfsfsdfdsafa"
+}
+
+###
+
+GET http://localhost:3000/auth/myPosts
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDc4MDcxLCJleHAiOjE2MTkwNzk4NzF9.3ymsSUEZ39THsQh7CiFPv0OYhG67_AY5utnrg_NY-bI
+
+###
+
+DELETE http://localhost:3000/auth/deletePost
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDc2NzcxLCJleHAiOjE2MTkwNzc2NzF9.F04DqQRgMEa5OZqCL5n7W46pEVzp4S92elJX_t0eErY
+Content-Type: application/json
+
+{
+	"name": "My first post"
 }

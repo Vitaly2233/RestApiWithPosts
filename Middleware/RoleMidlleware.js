@@ -9,10 +9,13 @@ module.exports = function (roles) {
 			if (!token) return res.status(403).json({ message: "User is not authorized" });
 			const { roles: userRoles, id: id } = jwt.verify(token, secret);
 			let hasRole = false;
-			userRoles.forEach(role => {
-				if (roles == role) hasRole = true;
+			roles.forEach(role => {
+				userRoles.forEach(userRole => {
+					if (userRole = role) hasRole = true
+				})
 			});
-			if (!hasRole) return res.status(403).json({ message: "You don`t have permission" })
+			if (!hasRole) return res.status(403).json({ message: "You don`t have permission" });
+			req.user = { roles: userRoles, id: id }
 			next();
 		} catch (e) {
 			console.log(e);

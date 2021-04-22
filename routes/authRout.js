@@ -1,12 +1,14 @@
 const Router = require("express");
-const controller = require("../Constrollers/authController");
+//controllers
+const authController = require("../Constrollers/authController");
+const postController = require("../Constrollers/postController");
+
 const router = Router();
 const { check } = require("express-validator");
+//importing middlewares
 const roleMiddleware = require("../Middleware/RoleMidlleware");
-const AuthMiddleware = require("../Middleware/AuthMiddleware");
-const CreateMiddleware = require("../Middleware/CreateMiddleware");
 
-router.post("/login", controller.login);
+router.post("/login", authController.login);
 router.post(
 	"/registration",
 	[
@@ -16,10 +18,11 @@ router.post(
 			"password can't be shorter than 4 or longer than 10"
 		).isLength({ min: 4, max: 10 }),
 	],
-	controller.registration
+	authController.registration
 );
-router.get("/allPosts", roleMiddleware(['ADMIN']), controller.getAllPosts);
-router.get("/Posts", AuthMiddleware, controller.getUserPost);
-router.post("/createPost", CreateMiddleware, controller.createPost);
+router.get("/allPosts", roleMiddleware(['ADMIN']), postController.getAllPosts);
+router.get("/myPosts", roleMiddleware(['ADMIN', 'user']), postController.getUserPost);
+router.post("/createPost", roleMiddleware(['ADMIN', 'user']), postController.createPost);
+router.delete("/deletePost", roleMiddleware(['ADMIN', 'user']), postController.deletePost)
 
 module.exports = router;
