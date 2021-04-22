@@ -25,25 +25,26 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZTkzO
 ###
 
 POST http://localhost:3000/auth/createPost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDc4MDcxLCJleHAiOjE2MTkwNzk4NzF9.3ymsSUEZ39THsQh7CiFPv0OYhG67_AY5utnrg_NY-bI
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDgwMjQ1LCJleHAiOjE2MTkwODIwNDV9.QlNMUJOuRDFSv3O2pudLbAVGefon4tEVNY9xQfr6lek
 Content-Type: application/json
 
 {
-	"name": "My second post",
+	"name": "My first post",
 	"description": "fsdfasddfssdfsfadadfdsfsfsdfdsafa"
 }
 
 ###
 
 GET http://localhost:3000/auth/myPosts
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDc4MDcxLCJleHAiOjE2MTkwNzk4NzF9.3ymsSUEZ39THsQh7CiFPv0OYhG67_AY5utnrg_NY-bI
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDgwNTQ3LCJleHAiOjE2MTkwODIzNDd9._L42OiJkyn7l9NVGXlXegymxof1JkAYEmTnWvurAP-c
 
 ###
 
 DELETE http://localhost:3000/auth/deletePost
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDc2NzcxLCJleHAiOjE2MTkwNzc2NzF9.F04DqQRgMEa5OZqCL5n7W46pEVzp4S92elJX_t0eErY
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxYjhkNzVjOTBjMjVkMDNmMDE3MyIsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNjE5MDgwMjQ1LCJleHAiOjE2MTkwODIwNDV9.QlNMUJOuRDFSv3O2pudLbAVGefon4tEVNY9xQfr6lek
 Content-Type: application/json
 
 {
-	"name": "My first post"
+	"name": "My first post",
+	"owner": "user"
 }

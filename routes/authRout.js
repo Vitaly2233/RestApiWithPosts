@@ -23,6 +23,6 @@ router.post(
 router.get("/allPosts", roleMiddleware(['ADMIN']), postController.getAllPosts);
 router.get("/myPosts", roleMiddleware(['ADMIN', 'user']), postController.getUserPost);
 router.post("/createPost", roleMiddleware(['ADMIN', 'user']), postController.createPost);
-router.delete("/deletePost", roleMiddleware(['ADMIN', 'user']), postController.deletePost)
+router.delete("/deletePost", roleMiddleware(['ADMIN', 'user']), postController.deletePost);
 
 module.exports = router;

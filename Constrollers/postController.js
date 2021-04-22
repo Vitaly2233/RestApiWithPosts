@@ -37,14 +37,32 @@ class postController {
 		return res.json({ message: "Succesfully saved your post" });
 	}
 	async deletePost(req, res) {
-		console.log("here");
-		// const postName = req.body.name;
-		// const user = await User.findById(req.user.id);
-		// await Post.findOneAndDelete({ Name: postName, Owner: user.username }, (err) => {
-		// 	if (err) return res.json({ message: "Can't delete your post" });
-		// 	else return res.json({ message: "Succefully deleted your post" });
-		// });
+		let isAdmin = false;
+		req.user.roles.forEach(role => {
+			if (role == 'ADMIN') isAdmin = true;
+		});
+		const postName = req.body.name;
+		const user = await User.findById(req.user.id);
+		if (!isAdmin) {
+			const result = await Post.findOneAndDelete({ Name: postName, Owner: user.username });
+			deleteStatus(result, res);
+		}
+		if (!req.body.owner) {
+			const result = await Post.findOneAndDelete({ Name: postName, Owner: req.body.owner });
+			deleteStatus(result, res);
+		}
+		else {
+			const result = await Post.findOneAndDelete({ Name: postName, Owner: user.username });
+			deleteStatus(result, res);
+		}
 	}
+	async updatePost(req, res) {
+
+	}
+}
+function deleteStatus(result, response) {
+	if (!result) return response.json({ message: "Can't delete post post" });
+	else return response.json({ message: "Succefully deleted post" });
 }
 
 module.exports = new postController();
