@@ -12,6 +12,8 @@ class postController {
 		res.send(posts)
 	}
 	async getAllPosts(req, res) {
+		// #swagger.description = "!!! Only an Administrator can do that option !!!"
+
 		const posts = await Post.find({})
 		res.send(posts)
 	}
@@ -31,6 +33,7 @@ class postController {
 		return res.json({ message: "Succesfully saved your post" });
 	}
 	async deletePost(req, res) {
+		// #swagger.description = "!!!!!!If you are loggined as an administrator, you can write user's name into 'owner' key and delete this user's post, if not, then write nothing there!!!!!!"
 		let isAdmin = false;
 		req.user.roles.forEach(role => {
 			if (role == 'admin') isAdmin = true;
@@ -54,14 +57,14 @@ class postController {
 		}
 	}
 	async updatePost(req, res) {
+		// #swagger.description = "!!!!!!If you are loggined as an administrator, you can write user's name into 'owner' key and update this user's post, if not, then write nothing there!!!!!!"
 		const { name, newDescription } = req.body;
 		let isAdmin = false;
 		const user = await User.findById(req.user.id);
 		req.user.roles.forEach(role => {
-			if (role == 'ADMIN') isAdmin = true;
+			if (role == 'admin') isAdmin = true;
 		});
 		if (!isAdmin) {
-			console.log(newDescription);
 			const result = await Post.findOneAndUpdate({ Name: name, Owner: user.username }, { Description: newDescription })
 			sendStatus(result, res, "update");
 			return;
@@ -79,7 +82,10 @@ class postController {
 	}
 }
 function sendStatus(result, response, operation) {
-	if (!result) return response.json({ message: `Can't ${operation} post, probably you wrote something wrong` });
+	if (!result) {
+		// #swagger.responces[200] = {description : "Succes"}
+		return response.json({ message: `Can't ${operation} post, probably you wrote something wrong` })
+	}
 	else return response.json({ message: `Succefully ${operation}ed post` });
 }
 

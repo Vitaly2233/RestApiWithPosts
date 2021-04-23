@@ -38,13 +38,14 @@ class authController {
 				roles: [userRole.value],
 			});
 			await user.save();
-			console.log("Succefully added");
 		} catch (a) {
+			// #swagger.responses[400] = { description: 'Problem with the registration.' }
 			res.status(400).json({ message: "registration error" });
 		}
 	}
 	async login(req, res) {
 		try {
+
 			const { username, password } = req.body;
 			const user = await User.findOne({ username: username });
 			if (!user) {

@@ -1,29 +1,9 @@
 const Router = require("express");
 const router = Router();
 //controllers
-const authController = require("../Constrollers/authController");
-const postController = require("../Constrollers/postController");
-/**
- * @swagger
- * components: 
- *   schemas:
- *     User:
- *       type: object
- *         required:
- * 		     - username
- * 			 - password
- * 		   properties:
- * 		     username:
- * 			   type: string
- *             description: "your username"
- * 		     password:
- * 		       type: string
- * 		       description: "password"
- * 		   example:
- * 		     username: user
- * 		     password: user
- * 
- */
+const authController = require("../Controllers/authController");
+const postController = require("../Controllers/postController");
+
 const { check } = require("express-validator");
 const roleMiddleware = require("../Middleware/RoleMidlleware");
 
@@ -40,10 +20,10 @@ router.post(
 	authController.registration
 );
 //routs for posts
-router.get("/allPosts", roleMiddleware(['ADMIN']), postController.getAllPosts);
-router.get("/myPosts", roleMiddleware(['ADMIN', 'user']), postController.getUserPost);
-router.post("/createPost", roleMiddleware(['ADMIN', 'user']), postController.createPost);
-router.delete("/deletePost", roleMiddleware(['ADMIN', 'user']), postController.deletePost);
-router.put("/editPost", roleMiddleware(['ADMIN', 'user']), postController.updatePost)
+router.get("/allPosts", roleMiddleware(['admin']), postController.getAllPosts);
+router.get("/myPosts", roleMiddleware(['admin', 'user']), postController.getUserPost);
+router.post("/createPost", roleMiddleware(['admin', 'user']), postController.createPost);
+router.delete("/deletePost", roleMiddleware(['admin', 'user']), postController.deletePost);
+router.put("/editPost", roleMiddleware(['admin', 'user']), postController.updatePost)
 
 module.exports = router;
